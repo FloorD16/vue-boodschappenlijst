@@ -1,10 +1,10 @@
 <script setup>
 import { computed } from 'vue';
 
-const { products } = defineProps({products: Array});
+const props = defineProps({ products: Array });
 
 const totalCosts = computed(() => {
-  return products.value.reduce((sum, product) => sum + product.price * product.amount, 0).toFixed(2);
+  return props.products.reduce((sum, product) => sum + product.price * product.amount, 0).toFixed(2);
   }
 );
 </script>
@@ -20,7 +20,7 @@ const totalCosts = computed(() => {
       </tr>
     </thead>
     <tbody>
-      <tr v-for="product in products" :key="product.item">
+      <tr v-for="product in props.products" :key="product.item">
         <td class="align-left">{{ product.item }}</td>
         <td class="align-right">{{ product.price.toFixed(2) }}</td>
         <td class="align-left"><input v-model="product.amount" type="number" min="0" step="1" /></td>
