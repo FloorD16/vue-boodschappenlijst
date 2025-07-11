@@ -25,6 +25,7 @@ const totalCosts = computed(() => {
         <td class="align-right">{{ product.price.toFixed(2) }}</td>
         <td class="align-left"><input v-model="product.amount" type="number" min="0" step="1" /></td>
         <td class="align-right">{{ (product.price * product.amount).toFixed(2) }}</td>
+        <td><RouterLink to="{ name: 'groceries.edit', params: { id: product.id } }" >Wijzig</RouterLink></td>
       </tr>
     </tbody>
     <tfoot>
