@@ -1,5 +1,7 @@
 <script setup>
 import { computed } from 'vue';
+import { RouterLink } from 'vue-router';
+import { removeGrocery } from '../domains/groceries/store';
 
 const props = defineProps({ products: Array });
 
@@ -25,7 +27,7 @@ const totalCosts = computed(() => {
         <td class="align-right">{{ product.price.toFixed(2) }}</td>
         <td class="align-left"><input v-model="product.amount" type="number" min="0" step="1" /></td>
         <td class="align-right">{{ (product.price * product.amount).toFixed(2) }}</td>
-        <td><RouterLink to="{ name: 'groceries.edit', params: { id: product.id } }" >Wijzig</RouterLink></td>
+        <td><RouterLink :to="{ name: 'groceries.edit', params: { id: product.id } }">Wijzig</RouterLink> / <button @click="removeGrocery(product.id)">Verwijder</button></td>
       </tr>
     </tbody>
     <tfoot>

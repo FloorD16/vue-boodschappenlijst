@@ -1,20 +1,16 @@
 <script setup>
 
-import { ref } from 'vue';
 import GroceryForm from '../components/GroceryForm.vue';
-import { addProduct } from '../store';
+import { addProduct, getAllProducts } from '../store';
 
-const grocery = {item: '', price: 0, amount: 0};
-
-let newGrocery = ref({});
+const grocery = { item: '', price: 0, amount: 0 };
 
 const createNewGrocery = (grocery) => {
-    newGrocery.value = grocery;
-    addProduct(newGrocery.value);
+    const newID = getAllProducts.value.length === 0 ? 1 : Math.max(...getAllProducts.value.map(product => product.id)) + 1;
+    addProduct({ ...grocery, id: newID });
 }
 </script>
 
 <template>
     <GroceryForm :grocery="grocery" @newGrocery="createNewGrocery" />
-    <p>{{ newGrocery }}</p>
 </template>
