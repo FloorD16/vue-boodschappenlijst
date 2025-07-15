@@ -13,9 +13,8 @@ const emit = defineEmits(['newGrocery']);
 
 const submit = () => {
     emit('newGrocery', productCopy.value);
-    console.log('Submitted:', productCopy.value);
 
-    //router.replace({ name: 'groceries.overview' });
+    router.replace({ name: 'groceries.overview' });
 }
 </script>
 
