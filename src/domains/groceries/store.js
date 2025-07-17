@@ -8,6 +8,8 @@ const products = ref([{ item: 'Rijst', price: 1, amount: 0, id: 1 },
 
 export const getAllProducts = computed(() => products.value);
 
+export const getProductByID = (id) => computed(() => products.value.find(product => product.id === id));
+
 export const addProduct = (product) => products.value.push(product);
 
 export const updateProduct = (updatedProduct) => {
